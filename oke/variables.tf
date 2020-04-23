@@ -1,20 +1,21 @@
-variable "tenancy_ocid" {
-  default = "ocid1.tenancy.oc1..aaaaaaaajehugl3ryss2gaxf3os7g5w4xdztfhy4coqnoizm2wpmrclnv5da"
-}
+# variable "tenancy_ocid" {
+#   default = "ocid1.tenancy.oc1..aaaaaaaajehugl3ryss2gaxf3os7g5w4xdztfhy4coqnoizm2wpmrclnv5da"
+# }
 
-variable "user_ocid" {
-  default = "ocid1.user.oc1..aaaaaaaaalv4ayoqqop6cl3rtyxkzx56cbfqmwtlooshq5ug7uy7akzgqeda"
-}
+# variable "user_ocid" {
+#   default = "ocid1.user.oc1..aaaaaaaaalv4ayoqqop6cl3rtyxkzx56cbfqmwtlooshq5ug7uy7akzgqeda"
+# }
 
-variable "fingerprint" {
-  default = "0f:ba:71:ad:39:28:ad:c9:28:87:d8:00:3c:61:0d:a9"
-}
+# variable "fingerprint" {
+#   default = "0f:ba:71:ad:39:28:ad:c9:28:87:d8:00:3c:61:0d:a9"
+# }
 
-variable "private_key_path" {
-  default = "~/.oci/oci_api_key.pem"
-}
+# variable "private_key_path" {
+#   default = "~/.oci/oci_api_key.pem"
+# }
 
 variable "region" {
+  default = "us-ashburn-1"
 }
 
 variable "ssh_private_key" {
