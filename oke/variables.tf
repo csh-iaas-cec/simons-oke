@@ -29,9 +29,8 @@ variable "compartment_ocid" {
 }
 
 provider "oci" {
-  tenancy_ocid = var.tenancy_ocid
-  
-  
+  auth = "InstancePrincipal"
+  region = "${var.region}"
 }
 
 data "oci_identity_availability_domains" "ashburn" {
