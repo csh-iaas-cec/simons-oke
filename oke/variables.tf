@@ -31,11 +31,11 @@ variable "compartment_ocid" {
 
 provider "oci" {
   auth = "InstancePrincipal"
-  region = "${var.region}"
+  region = var.region
 }
 
 data "oci_identity_availability_domains" "ashburn" {
-  compartment_id = var.tenancy_ocid
+  compartment_id = data.oci_identity_compartment.instance-compartment.compartment_id
 }
 
 ### Network Variables ##### 
