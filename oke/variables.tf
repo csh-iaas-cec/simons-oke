@@ -1,6 +1,6 @@
-# variable "tenancy_ocid" {
-#   default = "ocid1.tenancy.oc1..aaaaaaaajehugl3ryss2gaxf3os7g5w4xdztfhy4coqnoizm2wpmrclnv5da"
-# }
+variable "tenancy_ocid" {
+  default = "ocid1.tenancy.oc1..aaaaaaaajehugl3ryss2gaxf3os7g5w4xdztfhy4coqnoizm2wpmrclnv5da"
+}
 
 # variable "user_ocid" {
 #   default = "ocid1.user.oc1..aaaaaaaaalv4ayoqqop6cl3rtyxkzx56cbfqmwtlooshq5ug7uy7akzgqeda"
@@ -27,6 +27,7 @@ variable "ssh_public_key" {
 }
 
 variable "compartment_ocid" {
+  default = "ocid1.compartment.oc1..aaaaaaaae4364npm55dpakr5e6sfpce5su2nhj6ane27344cjsvgb2e5lkra"
 }
 
 provider "oci" {
@@ -35,7 +36,7 @@ provider "oci" {
 }
 
 data "oci_identity_availability_domains" "ashburn" {
-  compartment_id = data.oci_identity_compartment.instance-compartment.compartment_id
+  compartment_id = var.tenancy_ocid
 }
 
 ### Network Variables ##### 
