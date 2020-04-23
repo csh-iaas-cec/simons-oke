@@ -112,6 +112,7 @@ resource "oci_core_subnet" "s-w1" {
   vcn_id              = oci_core_virtual_network.oke-vcn.id
   route_table_id      = oci_core_route_table.rt1.id
   dhcp_options_id     = oci_core_virtual_network.oke-vcn.default_dhcp_options_id
+  prohibit_public_ip_on_vnic = true
 
   # provisioner "local-exec" {
   #   command = "sleep 5"
@@ -127,6 +128,7 @@ resource "oci_core_subnet" "s-w2" {
   vcn_id              = oci_core_virtual_network.oke-vcn.id
   route_table_id      = oci_core_route_table.rt1.id
   dhcp_options_id     = oci_core_virtual_network.oke-vcn.default_dhcp_options_id
+  prohibit_public_ip_on_vnic = true
 
   # provisioner "local-exec" {
   #   command = "sleep 5"
