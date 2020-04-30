@@ -196,7 +196,7 @@ resource "oci_core_network_security_group_security_rule" "egress_network_securit
     direction = "EGRESS"
     protocol = "all"
 
-    # destination = "All PHX Services in Oracle Services Network"
+    destination = "all-iad-services-in-oracle-services-network"
     destination_type = "SERVICE_CIDR_BLOCK"
 }
 
