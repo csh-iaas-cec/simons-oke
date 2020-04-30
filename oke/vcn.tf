@@ -177,7 +177,6 @@ resource "oci_core_network_security_group" "simmons_network_security_group" {
 resource "oci_core_network_security_group_security_rule" "ingress_network_security_group_security_rule" {
     #Required
     network_security_group_id = oci_core_network_security_group.simmons_network_security_group.id
-    vcn_id = oci_core_virtual_network.oke-vcn.id
     direction = "INGRESS"
     protocol = "6"
     source = "10.0.0.0/16"
