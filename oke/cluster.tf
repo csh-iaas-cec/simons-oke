@@ -56,7 +56,6 @@ resource "oci_containerengine_node_pool" "node_pool1" {
 
   }
 
-  quantity_per_subnet = var.node_pool_quantity_per_subnet
   ssh_public_key      = var.node_pool_ssh_public_key
 }
 
