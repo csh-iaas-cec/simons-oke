@@ -196,7 +196,7 @@ resource "oci_core_network_security_group_security_rule" "egress_network_securit
     direction = "EGRESS"
     protocol = "all"
 
-    destination = "OCI PHX ALL"
+    destination = "oci-phx-all"
     destination_type = "SERVICE_CIDR_BLOCK"
 }
 
