@@ -10,7 +10,7 @@ resource "oci_core_vcn" "oke-vcn" {
 resource "oci_core_nat_gateway" "oke_nat_gateway" {
     #Required
     compartment_id = "${var.compartment_ocid}"
-    vcn_id = "${oci_core_vcn.oke_vcn.id}"
+    vcn_id = "${oci_core_vcn.oke-vcn.id}"
 }
 
 resource "oci_core_internet_gateway" "oke_internet_gateway" {
@@ -24,7 +24,7 @@ resource "oci_core_internet_gateway" "oke_internet_gateway" {
 
 
 resource "oci_core_default_security_list" "default_security_list" {
-  manage_default_resource_id = "${oci_core_vcn.vcn1.default_security_list_id}"
+  manage_default_resource_id = "${oci_core_vcn.oke-vcn.default_security_list_id}"
   display_name               = "defaultSecurityList"
 
   // allow outbound tcp traffic on all ports
@@ -87,7 +87,7 @@ resource "oci_core_default_security_list" "default_security_list" {
 resource "oci_core_security_list" "sl-lb" {
   display_name   = "sl-loadbalancer"
   compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_virtual_network.oke-vcn.id
+  vcn_id         = oci_core_vcn.oke-vcn.id
 
   egress_security_rules {
     protocol    = "6"
@@ -143,7 +143,7 @@ resource "oci_core_security_list" "sl-lb" {
 resource "oci_core_security_list" "sl-w" {
   display_name   = "sl-workernodes"
   compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_virtual_network.oke-vcn.id
+  vcn_id         = oci_core_vcn.oke-vcn.id
 
   egress_security_rules {
     protocol    = "all"
@@ -287,7 +287,7 @@ resource "oci_core_subnet" "s-lb" {
 resource "oci_core_network_security_group" "simmons_network_security_group" {
   #Required
   compartment_id = "${var.compartment_ocid}"
-  vcn_id         = "${oci_core_virtual_network.oke-vcn.id}"
+  vcn_id         = "${oci_core_vcn.oke-vcn.id}"
   display_name   = "${var.network_security_group_display_name}"
 }
 

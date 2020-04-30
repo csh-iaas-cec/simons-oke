@@ -6,7 +6,7 @@ resource "oci_core_instance" "Bastion" {
   shape               = var.instance_shape
 
   create_vnic_details {
-    subnet_id        = oci_core_subnet.s-lb1.id
+    subnet_id        = oci_core_subnet.s-lb.id
     display_name     = "primaryvnic"
     assign_public_ip = true
   }

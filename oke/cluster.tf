@@ -5,11 +5,11 @@ resource "oci_containerengine_cluster" "oke_cluster" {
   compartment_id     = var.compartment_ocid
   kubernetes_version = var.cluster_kubernetes_version
   name               = var.cluster_name
-  vcn_id             = oci_core_virtual_network.oke-vcn.id
+  vcn_id             = oci_core_vcn.oke-vcn.id
 
   #Optional
   options {
-    service_lb_subnet_ids = [oci_core_subnet.s-lb1.id, oci_core_subnet.s-lb2.id]
+    service_lb_subnet_ids = [oci_core_subnet.s-lb.id]
 
     #Optional
     add_ons {
