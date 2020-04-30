@@ -34,7 +34,7 @@ resource "oci_containerengine_node_pool" "node_pool1" {
   name               = var.node_pool_name
   node_image_name    = var.node_pool_node_image_name
   node_shape         = var.node_pool_node_shape
-  subnet_ids         = [oci_core_subnet.s-w1.id, oci_core_subnet.s-w2.id]
+  subnet_ids         = [oci_core_subnet.s-worker.id]
 
   #Optional
   initial_node_labels {
