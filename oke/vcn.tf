@@ -108,7 +108,7 @@ resource "oci_core_security_list" "sl-lb" {
 
   egress_security_rules {
     protocol    = "all"
-    destination = "	10.0.10.0/24"
+    destination = "10.0.10.0/24"
     stateless   = false
 
     tcp_options {
