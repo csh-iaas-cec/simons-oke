@@ -53,20 +53,12 @@ variable "dns_label_vcn" {
   default = "dnsvcn"
 }
 
-variable "subnet_cidr_w1" {
-  default = "10.0.1.0/24"
-}
-
-variable "subnet_cidr_w2" {
-  default = "10.0.2.0/24"
-}
-
-variable "subnet_cidr_lb1" {
+variable "subnet_cidr_worker" {
   default = "10.0.10.0/24"
 }
 
-variable "subnet_cidr_lb2" {
-  default = "10.0.20.0/24"
+variable "subnet_cidr_lb" {
+  default = "	10.0.20.0/24"
 }
 
 variable "cluster_kubernetes_version" {

@@ -32,7 +32,7 @@ resource "oci_database_autonomous_database" "autonomous_database" {
   is_auto_scaling_enabled                        = "true"
   license_model                                  = "${var.autonomous_database_license_model}"
   is_preview_version_with_service_terms_accepted = "false"
-  subnet_id                                      = oci_core_subnet.s-w1.id
+  subnet_id                                      = oci_core_subnet.s-worker.id
   nsg_ids                                        = [oci_core_network_security_group.simmons_network_security_group.id]
 }
 
