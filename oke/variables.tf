@@ -58,7 +58,7 @@ variable "subnet_cidr_worker" {
 }
 
 variable "subnet_cidr_lb" {
-  default = "	10.0.20.0/24"
+  default = "10.0.20.0/24"
 }
 
 variable "cluster_kubernetes_version" {
