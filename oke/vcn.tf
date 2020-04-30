@@ -266,9 +266,9 @@ resource "oci_core_subnet" "s-worker" {
   display_name               = "subnet1-worker"
   security_list_ids          = [oci_core_security_list.sl-w.id]
   compartment_id             = var.compartment_ocid
-  vcn_id                     = oci_core_virtual_network.oke-vcn.id
+  vcn_id                     = oci_core_vcn.oke-vcn.id
   route_table_id             = oci_core_route_table.rt_worker.id
-  dhcp_options_id            = oci_core_virtual_network.oke-vcn.default_dhcp_options_id
+  dhcp_options_id            = oci_core_vcn.oke-vcn.default_dhcp_options_id
   prohibit_public_ip_on_vnic = true
 }
 
@@ -279,9 +279,9 @@ resource "oci_core_subnet" "s-lb" {
   display_name        = "subnet1-loadbalancer"
   security_list_ids   = [oci_core_security_list.sl-lb.id]
   compartment_id      = var.compartment_ocid
-  vcn_id              = oci_core_virtual_network.oke-vcn.id
+  vcn_id              = oci_core_vcn.oke-vcn.id
   route_table_id      = oci_core_route_table.rt_lb.id
-  dhcp_options_id     = oci_core_virtual_network.oke-vcn.default_dhcp_options_id
+  dhcp_options_id     = oci_core_vcn.oke-vcn.default_dhcp_options_id
 }
 
 resource "oci_core_network_security_group" "simmons_network_security_group" {
