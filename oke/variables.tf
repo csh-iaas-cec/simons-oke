@@ -45,6 +45,10 @@ variable "vcn_cidr_block" {
   default = "10.0.0.0/16"
 }
 
+variable "network_security_group_display_name" {
+  default = "SimmonsNSG"
+}
+
 variable "dns_label_vcn" {
   default = "dnsvcn"
 }

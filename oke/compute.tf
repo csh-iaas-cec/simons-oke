@@ -33,12 +33,18 @@ echo '################### webserver userdata begins #####################'
 touch ~opc/userdata.`date +%s`.start
 
 # echo '########## yum update all ###############'
-# yum update -y
+yum update -y
+sudo su -
+mkdir atp
+cd atp
+wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/9Oks1KgFdpmGrTrKps0pQHF0IyIoSJ-Jr5UexcMHyok/n/orasenatdpltinfomgmt01/b/BUCKETM07/o/clientrpms.zip
+unzip clientrpms.zip
+rpm -ivh clientrpms/oracle-instantclient18.5-basic-18.5.0.0.0-3.x86_64.rpm clientrpms/oracle-instantclient18.5-sqlplus-18.5.0.0.0-3.x86_64.rpm clientrpms/oracle-instantclient18.5-tools-18.5.0.0.0-3.x86_64.rpm
 EOF
 
 }
 
-output "Webserver-AD1" {
+output "Bastion" {
   value = [oci_core_instance.Bastion.public_ip]
 }
 

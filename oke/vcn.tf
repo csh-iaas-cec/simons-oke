@@ -165,3 +165,41 @@ resource "oci_core_subnet" "s-lb2" {
   # }
 }
 
+resource "oci_core_network_security_group" "simmons_network_security_group" {
+    #Required
+    compartment_id = "${var.compartment_ocid}"
+    vcn_id = "${oci_core_virtual_network.oke-vcn.id}"
+    display_name = "${var.network_security_group_display_name}"
+}
+
+resource "oci_core_network_security_group_security_rule" "ingress_network_security_group_security_rule" {
+    #Required
+    network_security_group_id = oci_core_network_security_group.simmons_network_security_group.id
+    direction = "INGRESS"
+    protocol = "6"
+    source = "10.0.0.0/16"
+    source_type = "CIDR_BLOCK"
+    tcp_options {
+
+        #Optional
+        destination_port_range {
+            #Required
+            max = "1522"
+            min = "1522"
+        }
+    }
+}
+
+resource "oci_core_network_security_group_security_rule" "egress_network_security_group_security_rule" {
+    #Required
+    network_security_group_id = "${oci_core_network_security_group.simmons_network_security_group.id}"
+    direction = "EGRESS"
+    protocol = "all"
+
+    destination = "OCI PHX ALL"
+    destination_type = "SERVICE_CIDR_BLOCK"
+}
+
+data "oci_core_services" "test_services" {
+}
+
