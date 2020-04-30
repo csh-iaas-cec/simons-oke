@@ -200,8 +200,8 @@ resource "oci_core_security_list" "sl-w" {
     protocol  = "all" // tcp
     source    = "10.0.0.0/16"
     stateless = false
-    }
   }
+  
 
   ingress_security_rules {
     protocol  = "6" // tcp
