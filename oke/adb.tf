@@ -23,7 +23,6 @@ resource "oci_database_autonomous_database" "autonomous_database" {
   cpu_core_count           = "1"
   data_storage_size_in_tbs = "1"
   db_name                  = "SimmonsATPtest"
-  private_endpoint_label = "adblabel"
 
   #Optional
   db_version                                     = "${data.oci_database_autonomous_db_versions.test_autonomous_db_versions.autonomous_db_versions.0.version}"
