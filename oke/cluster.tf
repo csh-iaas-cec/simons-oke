@@ -26,6 +26,11 @@ resource "oci_containerengine_cluster" "oke_cluster" {
   }
 }
 
+data "oci_identity_availability_domain" "ad" {
+  compartment_id = "${var.tenancy_ocid}"
+  ad_number      = 1
+}
+
 resource "oci_containerengine_node_pool" "node_pool1" {
   #Required
   cluster_id         = oci_containerengine_cluster.oke_cluster.id
@@ -34,13 +39,21 @@ resource "oci_containerengine_node_pool" "node_pool1" {
   name               = var.node_pool_name
   node_image_name    = var.node_pool_node_image_name
   node_shape         = var.node_pool_node_shape
-  subnet_ids         = [oci_core_subnet.s-worker.id]
 
   #Optional
   initial_node_labels {
     #Optional
     key   = var.node_pool_initial_node_labels_key
     value = var.node_pool_initial_node_labels_value
+  }
+
+  node_config_details {
+    placement_configs {
+      availability_domain = "${data.oci_identity_availability_domain.ad.name}"
+      subnet_id           = oci_core_subnet.s-worker.id
+    }
+    size = 2
+
   }
 
   quantity_per_subnet = var.node_pool_quantity_per_subnet
