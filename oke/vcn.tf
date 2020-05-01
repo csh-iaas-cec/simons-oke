@@ -264,6 +264,7 @@ resource "oci_core_route_table" "rt_lb" {
 resource "oci_core_subnet" "s-worker" {
   cidr_block                 = var.subnet_cidr_worker
   display_name               = "subnet1-worker"
+  dns_label                  = "workerdns"
   security_list_ids          = [oci_core_security_list.sl-w.id]
   compartment_id             = var.compartment_ocid
   vcn_id                     = oci_core_vcn.oke-vcn.id
@@ -276,6 +277,7 @@ resource "oci_core_subnet" "s-worker" {
 
 resource "oci_core_subnet" "s-lb" {
   cidr_block          = var.subnet_cidr_lb
+  dns_label           = "lbdns"
   display_name        = "subnet1-loadbalancer"
   security_list_ids   = [oci_core_security_list.sl-lb.id]
   compartment_id      = var.compartment_ocid
